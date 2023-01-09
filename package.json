@@ -1,10 +1,11 @@
 {
-  "version": "1.0.25",
+  "version": "1.0.29",
   "license": "UNLICENSED",
   "main": "index.js",
   "typings": "index.d.ts",
   "files": [
     "nuxt",
+    "utils",
     "vite"
   ],
   "engines": {
@@ -37,11 +38,11 @@
   },
   "devDependencies": {
     "@nuxt/types": "^2.15.8",
-    "@size-limit/preset-small-lib": "^8.1.0",
     "@types/hash-sum": "^1.0.0",
     "@types/scss-parser": "^1.0.1",
     "husky": "^8.0.2",
     "rimraf": "^3.0.2",
+    "rollup": "^3.9.1",
     "size-limit": "^8.1.0",
     "tsdx": "^0.14.1",
     "tslib": "^2.4.1",
