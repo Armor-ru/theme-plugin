@@ -1,0 +1,67 @@
+{
+  "version": "1.0.12",
+  "license": "UNLICENSED",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "engines": {
+    "node": ">=10"
+  },
+  "scripts": {
+    "start": "tsdx watch",
+    "build": "tsdx build",
+    "test": "tsdx test",
+    "lint": "tsdx lint",
+    "prepare": "tsdx build",
+    "size": "size-limit",
+    "analyze": "size-limit --why"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "tsdx lint"
+    }
+  },
+  "prettier": {
+    "printWidth": 80,
+    "semi": true,
+    "singleQuote": true,
+    "trailingComma": "es5"
+  },
+  "name": "@armor-ru/theme",
+  "author": "wiwishka",
+  "module": "dist/vite.esm.js",
+  "size-limit": [
+    {
+      "path": "dist/mylib.cjs.production.min.js",
+      "limit": "10 KB"
+    },
+    {
+      "path": "dist/mylib.esm.js",
+      "limit": "10 KB"
+    }
+  ],
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "repository": "https://github.com/Armor-ru/theme-plugin",
+  "dependencies": {
+    "hash-sum": "^2.0.0",
+    "query-ast": "^1.0.5",
+    "scss-parser": "^1.0.6"
+  },
+  "devDependencies": {
+    "@nuxt/types": "^2.15.8",
+    "@size-limit/preset-small-lib": "^8.1.0",
+    "@types/hash-sum": "^1.0.0",
+    "@types/scss-parser": "^1.0.1",
+    "husky": "^8.0.2",
+    "size-limit": "^8.1.0",
+    "tsdx": "^0.14.1",
+    "tslib": "^2.4.1",
+    "typescript": "^4.9.4",
+    "vite": "^4.0.3"
+  }
+}
