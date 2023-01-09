@@ -1,4 +1,4 @@
-import { generateScssTheme } from '@armor-ru/theme-utils';
+import { generateScssTheme } from '../utils/index';
 import { Module } from '@nuxt/types';
 import * as path from 'path';
 
@@ -9,7 +9,7 @@ interface IOptions {
 
 const pluginTheme: Module = function({ scss }: IOptions) {
   this.addPlugin({
-    src: path.resolve(__dirname, '../src', 'plugin.ts'),
+    src: path.resolve(__dirname, '../nuxt', 'plugin.ts'),
     ssr: false,
   });
   this.nuxt.hook('generate:done', async () => {
