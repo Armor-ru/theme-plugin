@@ -9,7 +9,7 @@ interface IOptions {
 
 const pluginTheme: Module = function({ scss }: IOptions) {
   this.addPlugin({
-    src: path.resolve(__dirname, '../nuxt', 'plugin.ts'),
+    src: path.resolve(__dirname, 'plugin.js'),
     ssr: false,
   });
   this.nuxt.hook('generate:done', async () => {

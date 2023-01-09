@@ -1,7 +1,7 @@
 import type { Plugin, ResolvedConfig } from 'vite';
 import sum from 'hash-sum';
 import * as path from 'path';
-import { generateScssTheme, initTheme } from '../utils';
+import { generateScssTheme, initTheme } from '../utils/index';
 
 interface IOptions {
   scss: string;

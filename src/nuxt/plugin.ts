@@ -1,4 +1,4 @@
-import { initTheme } from '@armor-ru/theme/src/utils/client';
+import { initTheme } from '../utils/client';
 import { Plugin } from '@nuxt/types';
 
 const pluginTheme: Plugin = function({ base }) {

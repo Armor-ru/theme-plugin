@@ -1,28 +1,21 @@
 {
-  "version": "1.0.18",
+  "version": "1.0.25",
   "license": "UNLICENSED",
-  "main": "dist/index.js",
-  "typings": "dist/index.d.ts",
+  "main": "index.js",
+  "typings": "index.d.ts",
   "files": [
-    "dist",
-    "src"
+    "nuxt",
+    "vite"
   ],
   "engines": {
     "node": ">=10"
   },
   "scripts": {
-    "start": "tsdx watch",
-    "build": "tsdx build",
-    "test": "tsdx test",
-    "lint": "tsdx lint",
-    "prepare": "tsdx build",
-    "size": "size-limit",
-    "analyze": "size-limit --why"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "tsdx lint"
-    }
+    "clean": "rimraf dist/",
+    "build": "npm run clean && tsc && npm run build:plugin-nuxt && npm run build:vite && cp package*.json dist",
+    "build:plugin-nuxt": "rollup dist/nuxt/plugin.js --file dist/nuxt/plugin.js --format cjs",
+    "build:vite": "rollup dist/vite/index.js --file dist/vite/index.js --format cjs",
+    "pub": "npm run build && npm publish ./dist"
   },
   "prettier": {
     "printWidth": 80,
@@ -33,16 +26,6 @@
   "name": "@armor-ru/theme",
   "author": "wiwishka",
   "module": "dist/vite.esm.js",
-  "size-limit": [
-    {
-      "path": "dist/mylib.cjs.production.min.js",
-      "limit": "10 KB"
-    },
-    {
-      "path": "dist/mylib.esm.js",
-      "limit": "10 KB"
-    }
-  ],
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
   },
@@ -58,6 +41,7 @@
     "@types/hash-sum": "^1.0.0",
     "@types/scss-parser": "^1.0.1",
     "husky": "^8.0.2",
+    "rimraf": "^3.0.2",
     "size-limit": "^8.1.0",
     "tsdx": "^0.14.1",
     "tslib": "^2.4.1",
