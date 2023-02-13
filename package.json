@@ -1,5 +1,5 @@
 {
-  "version": "1.0.29",
+  "version": "1.0.36",
   "license": "UNLICENSED",
   "main": "index.js",
   "typings": "index.d.ts",
@@ -13,10 +13,12 @@
   },
   "scripts": {
     "clean": "rimraf dist/",
-    "build": "npm run clean && tsc && npm run build:plugin-nuxt && npm run build:vite && cp package*.json dist",
+    "build": "npm run clean && tsc && npm run build:plugin-nuxt && npm run build:vite && npm run build:vite-client && npm run build:cli && cp package*.json dist",
     "build:plugin-nuxt": "rollup dist/nuxt/plugin.js --file dist/nuxt/plugin.js --format cjs",
     "build:vite": "rollup dist/vite/index.js --file dist/vite/index.js --format cjs",
-    "pub": "npm run build && npm publish ./dist"
+    "build:vite-client": "rollup dist/vite/client.js --file dist/vite/client.js --format cjs",
+    "build:cli": "rollup dist/cli.js --banner \"#!/usr/bin/env node\" --file dist/cli.js --format cjs",
+    "pub": "npm run build && npm publish ./dist --access public"
   },
   "prettier": {
     "printWidth": 80,
@@ -28,13 +30,16 @@
   "author": "wiwishka",
   "module": "dist/vite.esm.js",
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
+    "registry": "https://npm.armlab.pro/"
   },
   "repository": "https://github.com/Armor-ru/theme-plugin",
   "dependencies": {
     "hash-sum": "^2.0.0",
     "query-ast": "^1.0.5",
     "scss-parser": "^1.0.6"
+  },
+  "bin": {
+    "armor-theme": "./cli.js"
   },
   "devDependencies": {
     "@nuxt/types": "^2.15.8",

@@ -1,7 +1,8 @@
 import type { Plugin, ResolvedConfig } from 'vite';
 import sum from 'hash-sum';
 import * as path from 'path';
-import { generateScssTheme, initTheme } from '../utils/index';
+import { generateScssTheme } from '../utils/index';
+import fs from 'fs';
 
 interface IOptions {
   scss: string;
@@ -16,7 +17,8 @@ interface IOptions {
     apply: 'build',
     configResolved(_config) {
       config = _config;
-      script = `(${initTheme.toString()})('${config.base}');`;
+      const fileTheme = fs.readFileSync(path.resolve(__dirname, "./client.js"), { encoding: 'utf8' });
+      script = `${fileTheme} initTheme('${config.base}');`;
       name = `theme.${sum(script)}.js`;
     },
     generateBundle() {
