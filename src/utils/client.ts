@@ -35,7 +35,8 @@ const kinds: Record<string, (key: string, obj: any) => CSS> = {
     }
     if (wght === 'regular') wght = 'normal';
 
-    return `@import url('${googleFont}');\n--${key}: ${fontStyle} ${wght} 1em ${obj.family};\n`;
+    return `@import url('${googleFont}');
+  --${key}: ${fontStyle} ${wght} 1em ${obj.family};\n`;
   },
   text: (key: string, obj: any): CSS => {
     return `--${key}: ${obj.text};\n`;
